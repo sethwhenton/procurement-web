@@ -1,8 +1,3 @@
-Sure thing! Here's a simple `README.md` file for your project with steps on how to clone your project and install dependencies. I'll also provide instructions on how to add this `README.md` file to your repository.
-
-### README.md
-
-```markdown
 # Procurement Benefits
 
 This project is a Django-based web application for managing procurement benefits.
