@@ -8,7 +8,7 @@ To get started with this project locally, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository_url>
+   git clone git clone https://github.com/sethwhenton/procurement-web.git
    cd procurement_benefits
    ```
 
