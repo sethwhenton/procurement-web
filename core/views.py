@@ -349,7 +349,11 @@ def add_budget(request):
             return redirect('view_budgets')
     else:
         form = BudgetForm()
-    return render(request, 'core/add_budget.html', {'form': form})
+    
+    budgets = Budget.objects.filter(company=company).values('classification')
+    budgets_json = json.dumps(list(budgets), cls=DjangoJSONEncoder)
+    
+    return render(request, 'core/add_budget.html', {'form': form, 'budgets': budgets_json})
 
 def update_budget(request, budget_id):
     budget = get_object_or_404(Budget, id=budget_id)
@@ -380,6 +384,9 @@ def add_department(request):
     company = get_selected_company(request)
     if not company:
         return redirect('main_home')
+    departments = Department.objects.filter(company=company)
+    departments_json = json.dumps([{'name': dept.name} for dept in departments])
+
     if request.method == 'POST':
         form = DepartmentForm(request.POST)
         if form.is_valid():
@@ -389,7 +396,11 @@ def add_department(request):
             return redirect('department_list')
     else:
         form = DepartmentForm()
-    return render(request, 'core/add_department.html', {'form': form})
+    
+    return render(request, 'core/add_department.html', {'form': form, 'departments_json': departments_json})
+
+
+
 
 def edit_departments(request):
     company = get_selected_company(request)
@@ -400,6 +411,11 @@ def edit_departments(request):
 
 def update_department(request, department_id):
     department = get_object_or_404(Department, id=department_id)
+    company = get_selected_company(request)
+    if not company:
+        return redirect('main_home')
+    departments = Department.objects.filter(company=company)
+    departments_json = json.dumps([{'name': dept.name} for dept in departments])
     if request.method == 'POST':
         form = DepartmentForm(request.POST, instance=department)
         if form.is_valid():
@@ -407,7 +423,8 @@ def update_department(request, department_id):
             return redirect('department_list')
     else:
         form = DepartmentForm(instance=department)
-    return render(request, 'core/update_department.html', {'form': form})
+    return render(request, 'core/update_department.html', {'form': form, 'department': department, 'departments_json': departments_json})
+
 
 def delete_department(request, department_id):
     department = get_object_or_404(Department, id=department_id)
@@ -415,7 +432,6 @@ def delete_department(request, department_id):
         department.delete()
         return redirect('department_list')
     return render(request, 'core/delete_department.html', {'department': department})
-
 def view_all_items(request):
     items = Item.objects.all()
     return render(request, 'core/view_all_items.html', {'items': items})

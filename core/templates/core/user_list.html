@@ -1,3 +1,4 @@
+
 {% extends 'core/base.html' %}
 {% block content %}
 <div class="container">
@@ -6,14 +7,13 @@
             <h1>User List</h1>
         </div>
     </div>
-    <table>
+    <table id="user-table" data-sorted-column="" data-sort-direction="">
         <thead>
             <tr>
-                <th>User Name</th>
-                <th>Department</th>
-                <th>Budget</th>
+                <th id="name-header" style="cursor: pointer;">User Name</th>
+                <th id="department-header" style="cursor: pointer;">Department</th>
+                <th id="budget-header" style="cursor: pointer;">Budget</th>
                 <th colspan="2">Actions</th>
-                <!-- Add other columns as needed -->
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,6 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.department }}</td>
                 <td>{{ user.budget }}</td>
-                <!-- Add other fields as needed -->
                 <td>
                     <a href="{% url 'update_user' user.id %}">
                         <button class="Btn">
@@ -34,7 +33,6 @@
                             </svg>
                         </button>
                     </a>
-
                 </td>
                 <td>
                     <a href="{% url 'delete_user' user.id %}">
@@ -51,7 +49,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4">No users found</td>
+                <td colspan="5">No users found</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -71,4 +69,35 @@
     </a>
     <a href="{% url 'admin_home' %}" class="button">Back</a>
 </div>
+
+<script>
+    function sortTable(columnIndex) {
+        const table = document.getElementById('user-table');
+        const rows = Array.from(table.rows).slice(1);
+        const isNumeric = !isNaN(rows[0].cells[columnIndex].innerText.trim());
+
+        let ascending = true;
+        if (table.getAttribute('data-sorted-column') == columnIndex) {
+            ascending = table.getAttribute('data-sort-direction') != 'asc';
+        }
+
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.cells[columnIndex].innerText.trim().toLowerCase();
+            const cellB = rowB.cells[columnIndex].innerText.trim().toLowerCase();
+
+            if (isNumeric) {
+                return ascending ? parseFloat(cellA) - parseFloat(cellB) : parseFloat(cellB) - parseFloat(cellA);
+            } else {
+                if (cellA < cellB) return ascending ? -1 : 1;
+                if (cellA > cellB) return ascending ? 1 : -1;
+                return 0;
+            }
+        });
+
+        rows.forEach(row => table.appendChild(row));
+
+        table.setAttribute('data-sorted-column', columnIndex);
+        table.setAttribute('data-sort-direction', ascending ? 'asc' : 'desc');
+    }
+</script>
 {% endblock %}

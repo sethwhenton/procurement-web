@@ -1,4 +1,3 @@
-<!-- core/templates/core/edit_departments.html -->
 {% extends 'core/base.html' %}
 {% block content %}
 <div class="container">
@@ -68,4 +67,32 @@
 
     
 </div>
+
+<script>
+    
+    
+    document.getElementById('addDepartmentForm').addEventListener('submit', function(event) {
+        // Get form elements
+        const nameInput = document.getElementById('name');
+        
+        // Regular expression for validation
+        const namePattern = /^[a-zA-Z\s]+$/;
+        
+        // Validate name
+        if (!namePattern.test(nameInput.value)) {
+            alert('Please enter a valid department name (letters and spaces only).');
+            nameInput.focus();
+            event.preventDefault();
+            return false;
+        }
+        // Check for duplicates
+        const departmentNames = departments.map(dept => dept.name.toLowerCase());
+        if (departmentNames.includes(nameInput.value.toLowerCase())) {
+            alert('This department already exists in the database.');
+            nameInput.focus();
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>
 {% endblock %}

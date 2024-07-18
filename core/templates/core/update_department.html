@@ -17,6 +17,8 @@
 </div>
 
 <script>
+    const departments = JSON.parse('{{ departments_json|safe }}');
+
     document.getElementById('updateDepartmentForm').addEventListener('submit', function(event) {
         // Get form elements
         const nameInput = document.getElementById('name');
@@ -27,6 +29,15 @@
         // Validate name
         if (!namePattern.test(nameInput.value)) {
             alert('Please enter a valid department name (letters and spaces only).');
+            nameInput.focus();
+            event.preventDefault();
+            return false;
+        }
+
+        // Check for duplicates
+        const departmentNames = departments.map(dept => dept.name.toLowerCase());
+        if (departmentNames.includes(nameInput.value.toLowerCase()) && nameInput.value.toLowerCase() == '{{ department.name|lower }}') {
+            alert('This department already exists in the database.');
             nameInput.focus();
             event.preventDefault();
             return false;

@@ -16,6 +16,11 @@
     <a href="{% url 'view_budgets' %}" class="button">Cancel</a>
 </div>
 
+
+<script id="budgets-json" type="application/json">
+    {{ budgets|json_script:"budgets" }}
+</script>
+
 <script>
     document.getElementById('updateBudgetForm').addEventListener('submit', function(event) {
         // Get form elements
@@ -38,6 +43,16 @@
         if (!amountPattern.test(amountInput.value)) {
             alert('Please enter a valid amount (numbers only).');
             amountInput.focus();
+            event.preventDefault();
+            return false;
+        }
+
+        // Check for duplicates
+        const budgets = JSON.parse(document.getElementById('budgets-json').textContent);
+        const budgetClassifications = budgets.map(budget => budget.classification.toLowerCase());
+        if (budgetClassifications.includes(classificationInput.value.toLowerCase())) {
+            alert('This budget classification already exists in the database.');
+            classificationInput.focus();
             event.preventDefault();
             return false;
         }

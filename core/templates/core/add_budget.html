@@ -37,6 +37,21 @@
             event.preventDefault();
             return false;
         }
+
+        // Check for duplicates
+        const budgets = JSON.parse(document.getElementById('budgets-json').textContent);
+        const budgetClassifications = budgets.map(budget => budget.classification.toLowerCase());
+        if (budgetClassifications.includes(classificationInput.value.toLowerCase())) {
+            alert('This budget classification already exists in the database.');
+            classificationInput.focus();
+            event.preventDefault();
+            return false;
+        }
     });
 </script>
+
+<script id="budgets-json" type="application/json">
+    {{ budgets|safe }}
+</script>
+
 {% endblock %}

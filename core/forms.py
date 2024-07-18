@@ -16,12 +16,12 @@ class UserForm(forms.ModelForm):
 class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
-        fields = ['name', 'company']
+        fields = ['name']
 
 class BudgetForm(forms.ModelForm):
     class Meta:
         model = Budget
-        fields = ['classification', 'amount', 'company']
+        fields = ['classification', 'amount']
 
 class CompanyForm(forms.ModelForm):
     class Meta:
