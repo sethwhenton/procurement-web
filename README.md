@@ -65,6 +65,7 @@ The Procurement Benefits project uses Django framework to build a comprehensive 
 - Finally worked on majority of the UI. A few touches left✅
 - Fixed an issue where the budget was not limiting the user when selecting from the catalogue ✅
 - Added the sort feature to each table ✅
+- Additions to items, budgets and departments now checks for duplicates and prompts the admin ✅
 
 ## Future Plans
 - Work on some extra few features for accessibility and convenience.
