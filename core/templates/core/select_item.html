@@ -44,9 +44,9 @@
                     const itemTotal = parseFloat($(this).find('.item-total').text());
                     totalCost += itemTotal;
                 });
-                $('#total-cost').text('Total Cost: $' + totalCost.toFixed(2));
+                $('#total-cost').text('Total Cost: GHC' + totalCost.toFixed(2));
             }
-/////////////////////////// this is to load up selected items at the checkout /////////////////////////////////
+/////////////////////////// this is to load up selected items at the checkout from summary page /////////////////////////////////
             function loadSelectedItems(selectedItems) {
                 selectedItems.forEach(function(item) {
                     const itemHtml = `
@@ -54,7 +54,7 @@
                             <p>
                                 <span class="item-name">${item.name}</span> x 
                                 <span class="item-quantity">${item.quantity}</span> - 
-                                $<span class="item-total">${item.total.toFixed(2)}</span>
+                                GHC <span class="item-total">${item.total.toFixed(2)}</span>
                             </p>
                             <div class="button-container">
                                 <button class="plus-button" aria-label="Increase item quantity" data-item-id="${item.id}">+</button>
@@ -77,7 +77,7 @@
                     alert('You have exceeded your budget!');
                     return;
                 }
-
+///////////////////// to populate at checkout list///////////////////
                 let selectedItem = $(`#catalogue-list li[data-item-id="${itemId}"]`);
                 if (selectedItem.length) {
                     let quantityElement = selectedItem.find('.item-quantity');
@@ -90,7 +90,7 @@
                             <p>
                                 <span class="item-name">${itemName}</span> x 
                                 <span class="item-quantity">1</span> - 
-                                $<span class="item-total">${itemPrice.toFixed(2)}</span>
+                                GHC <span class="item-total">${itemPrice.toFixed(2)}</span>
                             </p>
                             <div class="button-container">
                                 <button class="plus-button" aria-label="Increase item quantity" data-item-id="${itemId}">+</button>
@@ -190,10 +190,10 @@
     </script>
 </head>
 <body>
+
+
     <div class="heading">
-        <a href="{% url 'user_home' %}" class="back-button">
-            <button class="back_button">Back</button>
-        </a>
+        <a href="{% url 'user_home' %}" class="back-button"><button class="back_button">Back</button></a>
         <h2>Select Items for {{ user.name }}</h2>
     </div>
     <div class="display">
@@ -204,7 +204,7 @@
                 <li data-item-id="{{ item.id }}">
                     <p>
                         <span class="item-name">{{ item.name }}</span> - 
-                        $<span class="item-price">{{ item.price }}</span>
+                        GHC <span class="item-price">{{ item.price }}</span>
                     </p>
                     <button class="add-btn" aria-label="Add item" data-item-id="{{ item.id }}">+</button>
                 </li>
@@ -216,7 +216,7 @@
             <ul id="catalogue-list">
                 <!-- Selected items will be populated here -->
             </ul>
-            <p id="total-cost">Total Cost: $0.00</p>
+            <p id="total-cost">Total Cost GHS: 0.00</p>
             <button id="proceed-btn" aria-label="Proceed to checkout">Proceed</button>
         </div>
     </div>

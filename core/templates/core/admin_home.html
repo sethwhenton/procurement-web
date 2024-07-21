@@ -2,23 +2,29 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="topbar">
 
-        <div class="titlepart">
-            <h1>Admin Home for {{ company.name }}</h1>
+    <div class="home_container animated-div">
+        <div class="topbar">
+    
+            <div class="titlepart">
+                <h1>Admin Home for {{ company.name }}</h1>
+            </div>
+            
         </div>
-        
+
+        <div class="mid-content">
+            <div class="card">
+                <a href="{% url 'item_list' %}" class="fbutton"><span>Items</span></a>
+                <a href="{% url 'user_list' %}" class="fbutton"><span>Users</span></a>
+                <a href="{% url 'view_all_items' %}" class="fbutton"><span>All Items</span></a>
+                <a href="{% url 'settings' %}" class="fbutton"><span>Settings</span></a>
+            </div>
+        </div>
+
+        <a href="{% url 'home' %}" class="button">Back</a>
+    
     </div>
 
-    <div class="button-container">
-        <a href="{% url 'item_list' %}" class="button">Items</a>
-        <a href="{% url 'user_list' %}" class="button">Users</a>
-        <a href="{% url 'view_all_items' %}" class="button">View All Items</a>
-        <a href="{% url 'settings' %}" class="button">Settings</a>
-        
-    </div>
-    <a href="{% url 'home' %}" class="button">Back</a>
 
-</div>
+
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-    <div class="container">
+    <div class="container animated-div">
         <h1>User Home</h1>
         <form id="userForm" method="post">
             {% csrf_token %}
@@ -14,13 +14,13 @@
                     {% endfor %}
                 </select>
             </div>
-            <div class="button-container">
-                <button type="submit" class="button">Next</button>
+            <button type="submit" class="button">Next</button>
+            <div class="message-container">
+                <p>Cant find you name? Maybe you're in the wrong company<br>Click <a href="{% url 'main_home' %}" class="button">here</a> to go back to the company selection</p>
             </div>
         </form>
-        <div class="button-container">
-            <a href="{% url 'home' %}" class="button">Back to Home</a>
-        </div>
+        <a href="{% url 'home' %}" class="button">Back to Home</a>
+
     </div>
 
     <script>

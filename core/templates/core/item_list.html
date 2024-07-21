@@ -1,7 +1,7 @@
 <!-- core/templates/core/item_list.html -->
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="container">
+<div class="container animated-div">
     <div class="topbar">
         <div class="titlepart">
             <h1>Items List</h1>
@@ -10,8 +10,8 @@
     <table>
         <thead>
             <tr>
-                <th id="name-header" style="cursor: pointer;">Name</th>
-                <th id="price-header" style="cursor: pointer;">Price</th>
+                <th id="name-header" class="sortable-header">Name</th>
+                <th id="price-header" class="sortable-header">Price</th>
                 <th colspan="2">Actions</th>
             </tr>
         </thead>
@@ -49,7 +49,7 @@
         </tbody>
     </table>
     <a href="{% url 'add_item' %}">
-        <button class="nbutton" style="--clr: #00ad54;">
+        <button class="nbutton" style="--clr: #00ad54; margin-top: 20px;">
             <span class="nbutton-decor"></span>
             <div class="nbutton-content">
                 <div class="nbutton__icon">

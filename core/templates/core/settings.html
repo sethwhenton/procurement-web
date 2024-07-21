@@ -1,19 +1,18 @@
 <!-- core/templates/core/settings.html -->
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="container">
+<div class="container animated-div">
     <div class="topbar">
         <div class="titlepart">
             <h1>Settings</h1>
         </div>
     </div>
-    <div class="button-container">
-        
-    <a href="{% url 'edit_departments' %}" class="button">Edit Departments</a>
-    <a href="{% url 'view_budgets' %}" class="button">Edit Budgets</a>
-
+    <div class="mid-content">
+        <div class="card">
+            <a href="{% url 'edit_departments' %}" class="fbutton"><span>Edit <br>Departments</span></a>
+            <a href="{% url 'view_budgets' %}" class="fbutton"><span>Edit Budgets</span></a>
+        </div>
     </div>
-
 
     <div class="back-button">
         <a href="{% url 'admin_home' %}" class="button">Back to Admin Home</a>

@@ -1,18 +1,31 @@
 <!-- core/templates/core/main_home.html -->
 {% extends 'core/base.html' %}
+{% load static %}
+
 {% block content %}
-<div class="container">
-    <h1>Select a Company</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="company">Company:</label>
-        <select name="company" id="company">
-            {% for company in companies %}
-            <option value="{{ company.id }}">{{ company.name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Select</button>
-    </form>
-    <a href="{% url 'add_new_company' %}">Add New Company</a>
+<link rel="stylesheet" href="{% static 'core/home.css' %}">
+
+<div class="home_container animated-div">
+    <div class="topbar">
+        <div class="titlepart">
+            <h1>Select a Company</h1>
+        </div>
+    </div>
+    <div class="button-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="company">Company:</label>
+            <select name="company" id="company">
+                {% for company in companies %}
+                <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="button">Select</button>
+            
+
+        </form>
+        <a href="{% url 'add_new_company' %}">New</a>
+
+    </div>
 </div>
 {% endblock %}

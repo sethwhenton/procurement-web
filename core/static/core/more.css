@@ -7,6 +7,16 @@
 
 }
 
+.message-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ff5a91;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .titleheading{
     font-family: 'Exo 2', sans-serif;
     font-optical-sizing: auto;
@@ -14,5 +24,72 @@
     color: rgb(223, 132, 14);
 }
 
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px; /* Adjust the gap as needed */
+}
+
+.admin-grid .button {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.admin-grid .button:hover {
+    background-color: #0056b3;
+}
+.mid-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 210px;
+    height: 254px;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    gap: 5px;
+    padding: .4em;
+    display: flex;
+  }
+  
+  .card a {
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .5s;
+    background: #fff;
+    border: 1px solid #ff5a91;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card a:hover {
+    flex: 4;
+  }
+  
+  .card a span {
+    min-width: 14em;
+    padding: .5em;
+    text-align: center;
+    transform: rotate(-90deg);
+    transition: all .5s;
+    text-transform: uppercase;
+    color: #ff568e;
+    letter-spacing: .1em;
+  }
+  
+  .card a:hover span {
+    transform: rotate(0);
+  }
 /* more.css */
 

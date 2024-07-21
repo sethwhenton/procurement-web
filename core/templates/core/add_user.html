@@ -1,17 +1,14 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container animated-div">
     <h1>Add User</h1>
-    <form id="addUserForm" method="post">
+    <form id="addUserForm" method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="table-button">Add User</button>
+        <button type="submit" class="button">Submit</button>
     </form>
-    <a href="{% url 'user_list' %}" class="table-button">Cancel</a>
-    <div class="back-button">
-        <a href="{% url 'user_home' %}" class="button">Back to User Home</a>
-    </div>
+    <a href="{% url 'user_list' %}" class="button">Back</a>
 </div>
 
 <script>

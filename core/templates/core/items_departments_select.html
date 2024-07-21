@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'core/departments.css' %}">
-<div class="departments-display">
+<div class="departments-display animated-div">
     <div class="departments-catalogue">
         <h3>Select a Department</h3>
         <ul class="departments-list">
@@ -11,7 +11,8 @@
             <li><a href="{% url 'items_per_department' department.id %}">{{ department.name }}</a></li>
             {% endfor %}
         </ul>
-        <a href="{% url 'view_all_items' %}" class="departments-back-btn">Back</a>
+       
     </div>
+    <a href="{% url 'view_all_items' %}" class="departments-back-btn">Back</a>
 </div>
 {% endblock %}

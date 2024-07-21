@@ -1,13 +1,13 @@
 <!-- core/templates/core/delete_user.html -->
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="container">
+<div class="home_container animated-div">
     <div class="topbar">
         <div class="titlepart">
             <h1>Delete User</h1>
         </div>
     </div>
-    <p>Are you sure you want to delete "{{ user.username }}"?</p>
+    <p>Are you sure you want to delete "{{ user.name }}"?</p>
     <form method="post" action="">
         {% csrf_token %}
         <button type="submit" class="table-button">Yes</button>

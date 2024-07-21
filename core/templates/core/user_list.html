@@ -10,9 +10,9 @@
     <table id="user-table" data-sorted-column="" data-sort-direction="">
         <thead>
             <tr>
-                <th id="name-header" style="cursor: pointer;">User Name</th>
-                <th id="department-header" style="cursor: pointer;">Department</th>
-                <th id="budget-header" style="cursor: pointer;">Budget</th>
+                <th id="name-header" class="sortable-header">User Name</th>
+                <th id="department-header" class="sortable-header">Department</th>
+                <th id="budget-header" class="sortable-header">Budget</th>
                 <th colspan="2">Actions</th>
             </tr>
         </thead>
@@ -55,7 +55,7 @@
         </tbody>
     </table>
     <a href="{% url 'add_user' %}">
-        <button class="nbutton" style="--clr: #00ad54;">
+        <button class="nbutton" style="--clr: #00ad54; margin-top: 20px;">
             <span class="nbutton-decor"></span>
             <div class="nbutton-content">
                 <div class="nbutton__icon">
@@ -68,6 +68,7 @@
         </button>
     </a>
     <a href="{% url 'admin_home' %}" class="button">Back</a>
+
 </div>
 
 <script>

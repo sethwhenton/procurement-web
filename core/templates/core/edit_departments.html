@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<div class="container">
+<div class="container animated-div">
     <div class="topbar">
         <div class="titlepart">
             <h1>Edit Departments</h1>
@@ -49,10 +49,10 @@
     </table>
 
     <div class="belowpart">
-        <a href="{% url 'settings' %}" class="table-button">Back</a>
+        
         <a href="{% url 'add_department' %}">
-            <button class="nbutton">
-                <span class="nbutton-decor"></span>
+            <button class="nbutton" style="--clr: #00ad54; margin-top: 20px;">
+                <span class="nbutton-decor "></span>
                 <div class="nbutton-content">
                     <div class="nbutton__icon">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24">
@@ -63,6 +63,7 @@
                 </div>
             </button>
         </a>
+        <a href="{% url 'settings' %}" class="table-button">Back</a>
     </div>
 
     

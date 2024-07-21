@@ -2,16 +2,16 @@
 {% load custom_filters %}
 
 {% block content %}
-<div class="container">
+<div class="container animated-div">
     <h1>Items Selected in the {{ department.name }} Department</h1>
     <table id="items-department-table" data-item-names-length="{{ item_names|length }}">
         <thead>
             <tr>
-                <th id="staff-name-header" style="cursor: pointer;">Staff Name</th>
+                <th id="staff-name-header">Staff Name</th>
                 {% for item_name in item_names %}
-                <th class="item-header" style="cursor: pointer;">{{ item_name }}</th>
+                <th class="item-header">{{ item_name }}</th>
                 {% endfor %}
-                <th id="total-cost-header" style="cursor: pointer;">Total Cost</th>
+                <th id="total-cost-header">Total Cost</th>
             </tr>
         </thead>
         <tbody>

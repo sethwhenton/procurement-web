@@ -18,7 +18,7 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 800px; /* Increase max-width to ensure it accommodates all contents */
-    margin: 20px auto; /* Center the container */
+    margin: 20px auto;
 }
 
 .topbar {
@@ -91,6 +91,12 @@ select, input[type="text"] {
     text-align: center;
 }
 
+.botton-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -105,7 +111,7 @@ th, td {
     padding: 12px 15px;
     border: 1px solid #ddd;
     text-align: center;
-    cursor: pointer;
+
 }
 
 th {

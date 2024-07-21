@@ -5,16 +5,20 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'core/home.css' %}">
 
-<div class="home_container animated-div">
+<div class="container animated-div">
     <div class="topbar">
         <div class="titlepart">
-            <h1>Welcome to the Procurement Provisions selection site for{{ company.name }}</h1>
+            <h1>Welcome to the Procurement Provisions selection site for {{ company.name }}</h1>
+            <p>Click User to head over to select your items</p>
         </div>
     </div>
-    <div class="button-container">
-        <a href="{% url 'user_home' %}" class="button">User</a>
-        <a href="{% url 'admin_home' %}" class="button">Admin</a>
+    <div class="mid-content">
+        <div class="card">
+            <a href="{% url 'user_home' %}" class="fbutton"><span>User</span></a>
+            <a href="{% url 'admin_home' %}" class="fbutton"><span>Procurement<br>Admin</span></a>
+        </div>
     </div>
-    <a href="{% url 'main_home' %}" class="button">Back to select Company</a>
+    <a href="{% url 'main_home' %}" class="button">Back to Company Selection</a>
+
 </div>
 {% endblock %}

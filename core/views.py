@@ -60,7 +60,10 @@ def delete_company(request, company_id):
     return render(request, 'core/delete_company.html', {'company': company})
 
 def home(request):
-    return render(request, 'core/home.html')
+    company = get_selected_company(request)
+    if not company:
+        return redirect('main_home')
+    return render(request, 'core/home.html', {'company': company})
 
 def admin_home(request):
     company = get_selected_company(request)
@@ -191,18 +194,19 @@ def user_list(request):
     return render(request, 'core/user_list.html', {'users': users})
 
 def add_user(request):
-    company = get_selected_company(request)
-    if not company:
-        return redirect('main_home')
+    selected_company_id = request.session.get('selected_company')
+    if not selected_company_id:
+        return redirect('main_home')  # Redirect to select company if no company is selected
+
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserForm(request.POST, company_id=selected_company_id)
         if form.is_valid():
             user = form.save(commit=False)
-            user.company = company  # Associate user with the selected company
+            user.company_id = selected_company_id
             user.save()
             return redirect('user_list')
     else:
-        form = UserForm()
+        form = UserForm(company_id=selected_company_id)
     return render(request, 'core/add_user.html', {'form': form})
 
 def update_user(request, user_id):
@@ -349,11 +353,7 @@ def add_budget(request):
             return redirect('view_budgets')
     else:
         form = BudgetForm()
-    
-    budgets = Budget.objects.filter(company=company).values('classification')
-    budgets_json = json.dumps(list(budgets), cls=DjangoJSONEncoder)
-    
-    return render(request, 'core/add_budget.html', {'form': form, 'budgets': budgets_json})
+    return render(request, 'core/add_budget.html', {'form': form})
 
 def update_budget(request, budget_id):
     budget = get_object_or_404(Budget, id=budget_id)
@@ -373,6 +373,7 @@ def delete_budget(request, budget_id):
         return redirect('view_budgets')
     return render(request, 'core/delete_budget.html', {'budget': budget})
 
+
 def department_list(request):
     company = get_selected_company(request)
     if not company:
@@ -384,9 +385,6 @@ def add_department(request):
     company = get_selected_company(request)
     if not company:
         return redirect('main_home')
-    departments = Department.objects.filter(company=company)
-    departments_json = json.dumps([{'name': dept.name} for dept in departments])
-
     if request.method == 'POST':
         form = DepartmentForm(request.POST)
         if form.is_valid():
@@ -396,9 +394,7 @@ def add_department(request):
             return redirect('department_list')
     else:
         form = DepartmentForm()
-    
-    return render(request, 'core/add_department.html', {'form': form, 'departments_json': departments_json})
-
+    return render(request, 'core/add_department.html', {'form': form})
 
 
 
@@ -432,6 +428,9 @@ def delete_department(request, department_id):
         department.delete()
         return redirect('department_list')
     return render(request, 'core/delete_department.html', {'department': department})
+
+
+
 def view_all_items(request):
     items = Item.objects.all()
     return render(request, 'core/view_all_items.html', {'items': items})
