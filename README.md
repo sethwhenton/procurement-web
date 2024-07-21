@@ -3,11 +3,17 @@
 ## Introduction
 Welcome to the Procurement Benefits project README! This project is aimed at developing a web application using Django for managing procurement benefits, including items, users, departments, budgets, and more. It provides interfaces for both administrators and users to manage and utilize procurement resources effectively for my company.
 
+### UI Preview
+![UI Preview](./proj_preview/UI_preview.gif)
+
+### UI Preview
+![UI Preview](./proj_preview/catalogue_preview.gif)
+
 ### Catalogue Page
 ![Main Home Page](./proj_preview/catalogue_page.png)
 
 ### Item List Page
-![Main Home Page](./proj_preview/item_list.png)
+![Item List Page](./proj_preview/item_list.png)
 
 
 ## Setup Instructions
