@@ -9,6 +9,12 @@ Welcome to the Procurement Benefits project README! This project is aimed at dev
 ### UI Preview
 ![UI Preview](./proj_preview/catalogue_preview.gif)
 
+### Items List
+![Items List](./proj_preview/view_all_items.png)
+
+### Users List
+![Users list](./proj_preview/user_list.png)
+
 ### Catalogue Page
 ![Main Home Page](./proj_preview/catalogue_page.png)
 
