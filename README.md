@@ -1,7 +1,7 @@
 # Procurement Benefits Project
 
 ## Introduction
-Welcome to the Procurement Benefits project README! This project is aimed at developing a web application using Django for managing procurement benefits, including items, users, departments, budgets, and more. It provides interfaces for both administrators and users to manage and utilize procurement resources effectively for my company.
+Welcome to the Procurement Benefits project README! This project is aimed at developing a web application using Django for managing procurement benefits, including items, users, departments, budgets, and more. It provides interfaces for both administrators and users to manage and utilize procurement resources effectively within the company.
 
 ### UI Preview
 ![UI Preview](./proj_preview/UI_preview.gif)
